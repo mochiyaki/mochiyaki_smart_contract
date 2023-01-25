@@ -1,1 +1,1 @@
-# mochiyaki_smart_contract
+# Smart contract coded in solidity 📜

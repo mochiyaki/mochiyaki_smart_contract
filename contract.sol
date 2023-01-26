@@ -34,7 +34,7 @@ contract Mochiyaki is ERC721 {
     function mint(uint256 _id) public payable {
         require(_id != 0);
         require(_id <= maxSupply);
-        require(domains[_id].isOwned == false);
+        require(mochis[_id].isOwned == false);
         require(msg.value >= mochis[_id].cost);
         mochis[_id].isOwned = true;
         totalSupply++;

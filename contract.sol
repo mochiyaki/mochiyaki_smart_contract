@@ -14,7 +14,7 @@ contract Mochiyaki is ERC721 {
         bool isOwned;
     }
 
-    mapping(uint256 => Mochi) mochis;
+    mapping(uint256 => Mochi) mochies;
 
     modifier onlyOwner() {
         require(msg.sender == owner);
@@ -28,15 +28,15 @@ contract Mochiyaki is ERC721 {
 
     function list(string memory _name, uint256 _cost) public onlyOwner {
         maxSupply++;
-        mochis[maxSupply] = Mochi(_name, _cost, false);
+        mochies[maxSupply] = Mochi(_name, _cost, false);
     }
 
     function mint(uint256 _id) public payable {
         require(_id != 0);
         require(_id <= maxSupply);
-        require(mochis[_id].isOwned == false);
+        require(mochies[_id].isOwned == false);
         require(msg.value >= mochis[_id].cost);
-        mochis[_id].isOwned = true;
+        mochies[_id].isOwned = true;
         totalSupply++;
         _safeMint(msg.sender, _id);
     }

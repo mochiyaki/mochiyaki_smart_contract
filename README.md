@@ -1,1 +1,1 @@
-# Smart contract coded in solidity 📜
+# smart contract coded in solidity 📜

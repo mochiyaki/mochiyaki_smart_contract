@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
+
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -10,7 +11,7 @@ contract Mochiyaki is ERC721 {
 
     struct Mochi {
         string name;
-        uint256 cost;
+        uint256 price;
         bool isOwned;
     }
 
@@ -26,7 +27,7 @@ contract Mochiyaki is ERC721 {
         owner = msg.sender;
     }
 
-    function list(string memory _name, uint256 _cost) public onlyOwner {
+    function list(string memory _name, uint256 _price) public onlyOwner {
         maxSupply++;
         mochies[maxSupply] = Mochi(_name, _cost, false);
     }
@@ -35,7 +36,7 @@ contract Mochiyaki is ERC721 {
         require(_id != 0);
         require(_id <= maxSupply);
         require(mochies[_id].isOwned == false);
-        require(msg.value >= mochis[_id].cost);
+        require(msg.value >= mochis[_id].price);
         mochies[_id].isOwned = true;
         totalSupply++;
         _safeMint(msg.sender, _id);

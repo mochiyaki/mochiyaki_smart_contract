@@ -38,7 +38,6 @@ library Base64 {
             j += 4;
         }
 
-        // Adjust trailing empty values
         if ((padlen - bytes(_str).length) >= 1) { res[j-1] = base64urlchars[64];}
         if ((padlen - bytes(_str).length) >= 2) { res[j-2] = base64urlchars[64];}
         return string(res);
